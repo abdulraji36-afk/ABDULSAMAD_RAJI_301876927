@@ -1,0 +1,353 @@
+{
+  "nullableByTable": {
+    "profiles": {
+      "id": false,
+      "full_name": true,
+      "email": true,
+      "role": false,
+      "is_active": false,
+      "created_at": false
+    },
+    "products": {
+      "id": false,
+      "product_code": false,
+      "product_name": false,
+      "category": false,
+      "item_group": false,
+      "size_cl": false,
+      "unit": false,
+      "transaction_type": false,
+      "is_active": false,
+      "created_at": false,
+      "fixed_rgb_price": true,
+      "image_url": true,
+      "buying_cost": true,
+      "fixed_pet_price": true
+    },
+    "customers": {
+      "id": false,
+      "customer_code": false,
+      "customer_name": false,
+      "customer_type": false,
+      "customer_channel": false,
+      "phone": true,
+      "area": true,
+      "address": true,
+      "is_active": false,
+      "created_by": true,
+      "created_at": false
+    },
+    "stock_in": {
+      "id": false,
+      "stock_in_no": true,
+      "transaction_date": false,
+      "supplier_type": false,
+      "nbc_ref": true,
+      "remark": true,
+      "created_by": true,
+      "created_at": false
+    },
+    "stock_in_items": {
+      "id": false,
+      "stock_in_id": false,
+      "product_id": false,
+      "qty_in": false,
+      "cost_price": true,
+      "total_cost": true
+    },
+    "pet_sales": {
+      "id": false,
+      "request_no": true,
+      "sales_no": true,
+      "transaction_date": false,
+      "customer_id": false,
+      "status": false,
+      "payment_type": false,
+      "remark": true,
+      "requested_by": true,
+      "requested_at": true,
+      "approved_by": true,
+      "approved_at": true,
+      "approval_note": true,
+      "created_at": false,
+      "updated_at": false,
+      "voided_at": true,
+      "voided_by": true,
+      "void_reason": true,
+      "voided_from_status": true
+    },
+    "pet_sale_items": {
+      "id": false,
+      "pet_sale_id": false,
+      "product_id": false,
+      "qty_out": false,
+      "approved_unit_price": true,
+      "line_total": true,
+      "created_at": false
+    },
+    "empty_exchanges": {
+      "id": false,
+      "exchange_no": true,
+      "transaction_date": false,
+      "nbc_delivery_ref": true,
+      "rgb_cases_delivered": true,
+      "empties_taken_by_nbc": false,
+      "received_by": true,
+      "remark": true,
+      "created_by": true,
+      "created_at": false
+    },
+    "stock_movements": {
+      "id": false,
+      "product_id": false,
+      "movement_type": false,
+      "source_table": false,
+      "source_id": false,
+      "qty_in": false,
+      "qty_out": false,
+      "unit_cost": true,
+      "unit_price": true,
+      "transaction_date": false,
+      "created_at": false,
+      "created_by": true
+    },
+    "audit_logs": {
+      "id": false,
+      "user_id": true,
+      "action": false,
+      "entity_type": false,
+      "entity_id": false,
+      "old_values": true,
+      "new_values": true,
+      "created_at": false
+    },
+    "document_sequences": {
+      "sequence_key": false,
+      "sequence_date": false,
+      "last_value": false
+    },
+    "empty_opening_balance": {
+      "id": false,
+      "opening_empties": false,
+      "note": true,
+      "updated_by": true,
+      "updated_at": false
+    },
+    "rgb_sales": {
+      "id": false,
+      "sale_no": true,
+      "sale_date": false,
+      "customer_id": false,
+      "status": false,
+      "remark": true,
+      "created_by": true,
+      "created_at": false,
+      "updated_at": false,
+      "voided_at": true,
+      "voided_by": true,
+      "void_reason": true,
+      "voided_from_status": true
+    },
+    "rgb_sale_items": {
+      "id": false,
+      "rgb_sale_id": false,
+      "product_id": false,
+      "qty_out": false,
+      "price_per_crate": false,
+      "line_total": true,
+      "created_at": false
+    },
+    "rgb_dispatch_trips": {
+      "id": false,
+      "trip_no": true,
+      "dispatch_date": false,
+      "driver_name": false,
+      "truck_info": false,
+      "status": false,
+      "remark": true,
+      "dispatched_at": true,
+      "closed_at": true,
+      "created_by": true,
+      "created_at": false,
+      "updated_at": false
+    },
+    "rgb_dispatch_trip_sales": {
+      "id": false,
+      "dispatch_trip_id": false,
+      "rgb_sale_id": false,
+      "expected_empties": false,
+      "actual_empties_returned": true,
+      "returned_at": true,
+      "remark": true,
+      "created_at": false
+    },
+    "pet_dispatch_trips": {
+      "id": false,
+      "trip_no": true,
+      "dispatch_date": false,
+      "driver_name": false,
+      "truck_info": false,
+      "status": false,
+      "remark": true,
+      "dispatched_at": true,
+      "created_by": true,
+      "created_at": false,
+      "updated_at": false
+    },
+    "pet_dispatch_trip_sales": {
+      "id": false,
+      "dispatch_trip_id": false,
+      "pet_sale_id": false,
+      "created_at": false
+    },
+    "empty_adjustments": {
+      "id": false,
+      "adjustment_date": false,
+      "adjustment_type": false,
+      "quantity_delta": false,
+      "source_name": true,
+      "note": true,
+      "created_by": true,
+      "created_at": false
+    },
+    "dispatch_workers": {
+      "id": false,
+      "worker_name": false,
+      "worker_group": false,
+      "phone": true,
+      "is_active": false,
+      "created_by": true,
+      "created_at": false,
+      "updated_at": false
+    },
+    "rgb_empty_return_followups": {
+      "id": false,
+      "dispatch_trip_sale_id": false,
+      "quantity": false,
+      "received_date": false,
+      "remark": true,
+      "recorded_by": true,
+      "created_at": false
+    },
+    "telegram_notification_settings": {
+      "id": false,
+      "instant_enabled": false,
+      "daily_enabled": false,
+      "updated_at": false
+    },
+    "telegram_notification_outbox": {
+      "id": false,
+      "event_key": false,
+      "notification_type": false,
+      "event_type": false,
+      "audit_log_id": true,
+      "payload": false,
+      "status": false,
+      "attempts": false,
+      "available_at": false,
+      "locked_at": true,
+      "locked_by": true,
+      "sent_at": true,
+      "telegram_message_id": true,
+      "last_error": true,
+      "created_at": false,
+      "updated_at": false
+    },
+    "product_display_order": {
+      "id": false,
+      "product_ids": false
+    }
+  },
+  "foreignKeys": [
+    "profiles.id->auth_users.id",
+    "customers.created_by->profiles.id",
+    "stock_in.created_by->profiles.id",
+    "stock_in_items.stock_in_id->stock_in.id",
+    "stock_in_items.product_id->products.id",
+    "pet_sales.customer_id->customers.id",
+    "pet_sales.requested_by->profiles.id",
+    "pet_sales.approved_by->profiles.id",
+    "pet_sales.voided_by->profiles.id",
+    "pet_sale_items.pet_sale_id->pet_sales.id",
+    "pet_sale_items.product_id->products.id",
+    "empty_exchanges.created_by->profiles.id",
+    "stock_movements.product_id->products.id",
+    "stock_movements.created_by->profiles.id",
+    "audit_logs.user_id->profiles.id",
+    "empty_opening_balance.updated_by->profiles.id",
+    "rgb_sales.customer_id->customers.id",
+    "rgb_sales.created_by->profiles.id",
+    "rgb_sales.voided_by->profiles.id",
+    "rgb_sale_items.rgb_sale_id->rgb_sales.id",
+    "rgb_sale_items.product_id->products.id",
+    "rgb_dispatch_trips.created_by->profiles.id",
+    "rgb_dispatch_trip_sales.dispatch_trip_id->rgb_dispatch_trips.id",
+    "rgb_dispatch_trip_sales.rgb_sale_id->rgb_sales.id",
+    "pet_dispatch_trips.created_by->profiles.id",
+    "pet_dispatch_trip_sales.dispatch_trip_id->pet_dispatch_trips.id",
+    "pet_dispatch_trip_sales.pet_sale_id->pet_sales.id",
+    "empty_adjustments.created_by->profiles.id",
+    "dispatch_workers.created_by->auth_users.id",
+    "rgb_empty_return_followups.dispatch_trip_sale_id->rgb_dispatch_trip_sales.id",
+    "rgb_empty_return_followups.recorded_by->profiles.id",
+    "telegram_notification_outbox.audit_log_id->audit_logs.id"
+  ],
+  "enums": {
+    "app_role": [
+      "admin",
+      "manager",
+      "storekeeper",
+      "sales_staff",
+      "delivery_staff"
+    ],
+    "product_transaction_type": [
+      "pet_sale",
+      "rgb_trip"
+    ],
+    "customer_channel": [
+      "pet_only",
+      "rgb_only",
+      "both"
+    ],
+    "pet_sale_status": [
+      "draft",
+      "pending_approval",
+      "approved",
+      "rejected",
+      "cancelled"
+    ],
+    "payment_type": [
+      "cash",
+      "transfer",
+      "credit"
+    ],
+    "stock_movement_type": [
+      "stock_in",
+      "pet_sale",
+      "rgb_trip",
+      "adjustment"
+    ],
+    "rgb_sale_status": [
+      "pending_dispatch",
+      "assigned",
+      "dispatched",
+      "closed",
+      "cancelled"
+    ],
+    "rgb_dispatch_trip_status": [
+      "draft",
+      "dispatched",
+      "closed",
+      "cancelled"
+    ],
+    "pet_dispatch_trip_status": [
+      "draft",
+      "dispatched",
+      "cancelled"
+    ],
+    "dispatch_worker_group": [
+      "driver",
+      "worker"
+    ]
+  }
+}
