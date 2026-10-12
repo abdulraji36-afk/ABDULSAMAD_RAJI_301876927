@@ -4,9 +4,13 @@ Bilikis Store distributes beverages in plastic (PET) and returnable glass (RGB) 
 
 The standalone `bilikis` schema has 24 application tables, 209 application columns, and a small `auth_users` identity fixture. It adapts the supplied Supabase table extract using the Bilikis application migrations for enum definitions, generated totals, NBC reference checks, and void metadata. The exercise uses synthetic records and covers table design and data integrity. Production authentication, permissions, application triggers, and external notification delivery are outside its scope.
 
+## ER diagram
+
+The full diagram shows all 25 entities and 32 declared foreign keys, including optional staff references. Zoom in to read column types, keys, and cardinalities. [Open the PNG](diagrams/full-schema.png) · [Open the SVG](diagrams/full-schema.svg)
+
 ## Relational schema
 
-The primary key is `id` unless stated otherwise. Each foreign key in the table below references the target table's `id`. The schema SQL lists every column and type. [Schema SQL](sql/01-schema.sql)
+The primary key is `id` unless stated otherwise. Each foreign key in the table below references the target table's `id`. The SQL and diagram list every column and type. [Schema SQL](sql/01-schema.sql)
 
 | Table | Foreign keys | Other keys or role |
 |---|---|---|
@@ -63,4 +67,4 @@ npm ci
 npm run verify:p1
 ```
 
-The design draws on the supplied Bilikis schema and application migrations. Codex assisted with the adaptation, documentation and local verification. [PostgreSQL constraints reference](https://www.postgresql.org/docs/current/ddl-constraints.html)
+The design draws on the supplied Bilikis schema and application migrations. Codex assisted with the adaptation, documentation, diagram, and local verification. [PostgreSQL constraints reference](https://www.postgresql.org/docs/current/ddl-constraints.html)
