@@ -67,4 +67,8 @@ npm ci
 npm run verify:p1
 ```
 
+The verification screenshot shows 34 successful checks, including rejection of an orphan sale item and duplicate dispatch assignments. The synthetic stock results are 85 PET 50cl packs, 30 PET 60cl packs, and 60 RGB 35cl crates.
+
+![Screenshot of the Portfolio 1 validation results](evidence/validation-screenshot.png)
+
 The design draws on the supplied Bilikis schema and application migrations. Codex assisted with the adaptation, documentation, diagram, and local verification. [PostgreSQL constraints reference](https://www.postgresql.org/docs/current/ddl-constraints.html)
