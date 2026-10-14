@@ -8,7 +8,8 @@
     "node": ">=20"
   },
   "scripts": {
-    "verify:p1": "node scripts/verify-p1.mjs"
+    "verify:p1": "node scripts/verify-p1.mjs",
+    "verify:p2": "node portfolio-2-query-optimisation/run.mjs"
   },
   "devDependencies": {
     "@electric-sql/pglite": "0.5.14"
