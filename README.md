@@ -6,4 +6,4 @@ Portfolio 1 models sales, stock, dispatch, and returnable containers for a bever
 - Full ER diagram · [PNG](portfolio-1-database-design/diagrams/full-schema.png) · [SVG](portfolio-1-database-design/diagrams/full-schema.svg)
 - [Validation screenshot](portfolio-1-database-design/evidence/validation-screenshot.png)
 
-Portfolio 2 runs six SQL reports using Bilikis catalogue products and synthetic transactions. [Portfolio 2 queries and examples](portfolio-2-query-optimisation/README.md)
+Portfolio 2 compares business queries and index performance on reproducible synthetic data. [Portfolio 2 report, SQL, and evidence](portfolio-2-query-optimisation/README.md)

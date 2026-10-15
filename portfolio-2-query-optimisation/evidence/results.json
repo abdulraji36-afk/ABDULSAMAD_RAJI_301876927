@@ -1,0 +1,829 @@
+{
+  "started_at_utc": "2026-11-08T08:05:48.022Z",
+  "finished_at_utc": "2026-11-08T08:05:54.849Z",
+  "engine": "PostgreSQL 18.6 (PGlite 0.5.14) on wasm32-unknown-emscripten, compiled by emcc (Emscripten gcc/clang-like replacement + linker emulating GNU ld) 6.0.5 (1db513782be24469589d7cb8a1f1834e9a33f271), 32-bit",
+  "node": "v24.14.1",
+  "dataset": {
+    "customers": 402,
+    "products": 122,
+    "pet_sales": 60002,
+    "pet_sale_items": 60002,
+    "stock_movements": 57519
+  },
+  "measurement": {
+    "warmup_runs_per_phase": 2,
+    "measured_runs_per_phase": 7,
+    "shared_blocks": "Shared Hit Blocks plus Shared Read Blocks at the root plan node"
+  },
+  "reports": [
+    {
+      "name": "low-stock",
+      "params": [
+        50
+      ],
+      "rows": [
+        {
+          "product_code": "F_PET_50",
+          "product_name": "FANTA ORANGE 50CL X12 PET",
+          "unit": "Packs",
+          "current_stock": "30"
+        }
+      ]
+    },
+    {
+      "name": "sales-by-channel",
+      "params": [
+        "2026-10-01",
+        "2026-11-01"
+      ],
+      "rows": [
+        {
+          "channel": "PET",
+          "sale_count": 2,
+          "recorded_sales_value": "30000"
+        },
+        {
+          "channel": "RGB",
+          "sale_count": 2,
+          "recorded_sales_value": "140000"
+        }
+      ]
+    },
+    {
+      "name": "rgb-shortages",
+      "params": [],
+      "rows": [
+        {
+          "customer_code": "DEMO-CUS-001",
+          "sale_no": "DEMO-RGB-001",
+          "expected_empties": 12,
+          "initial_returns": 8,
+          "additional_returns": 2,
+          "outstanding": 2
+        }
+      ]
+    },
+    {
+      "name": "stock-valuation",
+      "params": [],
+      "rows": [
+        {
+          "product_code": "C_PET_50",
+          "product_name": "COCA COLA LS 50CL X12 PET",
+          "unit": "Packs",
+          "current_stock": "85",
+          "buying_cost": "1500",
+          "estimated_stock_value": "127500"
+        },
+        {
+          "product_code": "C_RGB",
+          "product_name": "COCA COLA ULTRA LS 50CL X24 RGB",
+          "unit": "Crates",
+          "current_stock": "60",
+          "buying_cost": "6200",
+          "estimated_stock_value": "372000"
+        },
+        {
+          "product_code": "F_PET_50",
+          "product_name": "FANTA ORANGE 50CL X12 PET",
+          "unit": "Packs",
+          "current_stock": "30",
+          "buying_cost": null,
+          "estimated_stock_value": null
+        }
+      ]
+    },
+    {
+      "name": "customer-pet-history",
+      "params": [
+        "DEMO-CUS-001",
+        "2026-10-01",
+        "2026-11-01"
+      ],
+      "rows": [
+        {
+          "id": "00000000-0000-0000-0000-000000000401",
+          "sales_no": "DEMO-PET-001",
+          "sale_date": "2026-10-05",
+          "payment_type": "cash"
+        }
+      ]
+    },
+    {
+      "name": "product-movement-period",
+      "params": [
+        "C_PET_50",
+        "2026-10-01",
+        "2026-11-01"
+      ],
+      "rows": [
+        {
+          "movement_count": 3,
+          "received": "100",
+          "issued": "15",
+          "net_movement": "85"
+        }
+      ]
+    }
+  ],
+  "benchmarks": [
+    {
+      "name": "customer-pet-history",
+      "params": [
+        "BENCH-CUS-0042",
+        "2026-07-01",
+        "2026-11-01"
+      ],
+      "table": "pet_sales",
+      "index": "p2_pet_sales_customer_date_idx",
+      "rows": [
+        {
+          "id": "520bd26b-a3db-d9b0-9db3-528c4bd4c3ea",
+          "sales_no": "BENCH-PET-SALE-005641",
+          "sale_date": "2026-10-30",
+          "payment_type": "transfer"
+        },
+        {
+          "id": "24c46981-3fd5-be20-fdff-626f295d8d41",
+          "sales_no": "BENCH-PET-SALE-034841",
+          "sale_date": "2026-10-30",
+          "payment_type": "transfer"
+        },
+        {
+          "id": "38774e0f-0f3a-f941-26c8-434cdf05dab6",
+          "sales_no": "BENCH-PET-SALE-059641",
+          "sale_date": "2026-10-20",
+          "payment_type": "transfer"
+        },
+        {
+          "id": "1fb8a4f4-d472-86ae-8e26-c6293594b595",
+          "sales_no": "BENCH-PET-SALE-030441",
+          "sale_date": "2026-10-20",
+          "payment_type": "transfer"
+        },
+        {
+          "id": "0d2c5eeb-c05b-184d-7ce9-6b8ca1111392",
+          "sales_no": "BENCH-PET-SALE-001241",
+          "sale_date": "2026-10-20",
+          "payment_type": "transfer"
+        },
+        {
+          "id": "af38a4d5-458d-1a21-fceb-ed2226840ca7",
+          "sales_no": "BENCH-PET-SALE-055241",
+          "sale_date": "2026-10-10",
+          "payment_type": "transfer"
+        },
+        {
+          "id": "62d490ad-99d1-ac19-4de2-69d9d53c6a95",
+          "sales_no": "BENCH-PET-SALE-026041",
+          "sale_date": "2026-10-10",
+          "payment_type": "transfer"
+        },
+        {
+          "id": "e91f4d3a-648e-ef58-d764-15ff648994c5",
+          "sales_no": "BENCH-PET-SALE-021641",
+          "sale_date": "2026-09-30",
+          "payment_type": "transfer"
+        },
+        {
+          "id": "7d0bd317-12d7-f5c5-e4c3-e7be14ed9533",
+          "sales_no": "BENCH-PET-SALE-050841",
+          "sale_date": "2026-09-30",
+          "payment_type": "transfer"
+        },
+        {
+          "id": "d197322d-372a-e515-0fbb-dbd84f6b63ef",
+          "sales_no": "BENCH-PET-SALE-046441",
+          "sale_date": "2026-09-20",
+          "payment_type": "transfer"
+        },
+        {
+          "id": "80272415-fcac-8ba0-4add-387fef6b3503",
+          "sales_no": "BENCH-PET-SALE-017241",
+          "sale_date": "2026-09-20",
+          "payment_type": "transfer"
+        },
+        {
+          "id": "ac75db01-f221-d57e-9aaf-6627ff32ffe2",
+          "sales_no": "BENCH-PET-SALE-012841",
+          "sale_date": "2026-09-10",
+          "payment_type": "transfer"
+        },
+        {
+          "id": "22756ec3-7e9c-e383-97d1-841c47b98a8d",
+          "sales_no": "BENCH-PET-SALE-042041",
+          "sale_date": "2026-09-10",
+          "payment_type": "transfer"
+        },
+        {
+          "id": "236aa6b6-aa0d-09af-dc40-4a8e18b9827d",
+          "sales_no": "BENCH-PET-SALE-037641",
+          "sale_date": "2026-08-31",
+          "payment_type": "transfer"
+        },
+        {
+          "id": "a30337bf-804c-cd3e-0c88-0005de956ac9",
+          "sales_no": "BENCH-PET-SALE-004041",
+          "sale_date": "2026-08-21",
+          "payment_type": "transfer"
+        },
+        {
+          "id": "5fe41fe5-11ef-9010-b73d-244d9e9f1f71",
+          "sales_no": "BENCH-PET-SALE-033241",
+          "sale_date": "2026-08-21",
+          "payment_type": "transfer"
+        },
+        {
+          "id": "9ab77972-7c94-a833-e2ad-5015783b6110",
+          "sales_no": "BENCH-PET-SALE-028841",
+          "sale_date": "2026-08-11",
+          "payment_type": "transfer"
+        },
+        {
+          "id": "2b5eae70-2688-7ec2-913c-f8b1019c57af",
+          "sales_no": "BENCH-PET-SALE-058041",
+          "sale_date": "2026-08-11",
+          "payment_type": "transfer"
+        },
+        {
+          "id": "cc16183e-9402-d5e8-e801-594067254b3f",
+          "sales_no": "BENCH-PET-SALE-053641",
+          "sale_date": "2026-08-01",
+          "payment_type": "transfer"
+        },
+        {
+          "id": "bdf28b74-5378-4e46-d393-d54945a1e0f3",
+          "sales_no": "BENCH-PET-SALE-024441",
+          "sale_date": "2026-08-01",
+          "payment_type": "transfer"
+        }
+      ],
+      "before": {
+        "execution_ms": [
+          8.762,
+          8.744,
+          8.774,
+          8.311,
+          8.173,
+          8.457,
+          8.143
+        ],
+        "median_ms": 8.457,
+        "shared_blocks": 1038,
+        "scan_nodes": [
+          {
+            "type": "Seq Scan",
+            "index": null,
+            "actual_rows": 26
+          }
+        ],
+        "plan": {
+          "Plan": {
+            "Node Type": "Limit",
+            "Parallel Aware": false,
+            "Async Capable": false,
+            "Startup Cost": 2244,
+            "Total Cost": 2244.05,
+            "Plan Rows": 20,
+            "Plan Width": 77,
+            "Actual Rows": 20,
+            "Actual Loops": 1,
+            "Disabled": false,
+            "Shared Hit Blocks": 1038,
+            "Shared Read Blocks": 0,
+            "Shared Dirtied Blocks": 0,
+            "Shared Written Blocks": 0,
+            "Local Hit Blocks": 0,
+            "Local Read Blocks": 0,
+            "Local Dirtied Blocks": 0,
+            "Local Written Blocks": 0,
+            "Temp Read Blocks": 0,
+            "Temp Written Blocks": 0,
+            "Plans": [
+              {
+                "Node Type": "Index Scan",
+                "Parent Relationship": "InitPlan",
+                "Subplan Name": "InitPlan 1",
+                "Parallel Aware": false,
+                "Async Capable": false,
+                "Scan Direction": "Forward",
+                "Index Name": "customers_customer_code_key",
+                "Relation Name": "customers",
+                "Alias": "customers",
+                "Startup Cost": 0.27,
+                "Total Cost": 8.29,
+                "Plan Rows": 1,
+                "Plan Width": 16,
+                "Actual Rows": 1,
+                "Actual Loops": 1,
+                "Disabled": false,
+                "Index Cond": "(customer_code = 'BENCH-CUS-0042'::text)",
+                "Rows Removed by Index Recheck": 0,
+                "Index Searches": 1,
+                "Shared Hit Blocks": 3,
+                "Shared Read Blocks": 0,
+                "Shared Dirtied Blocks": 0,
+                "Shared Written Blocks": 0,
+                "Local Hit Blocks": 0,
+                "Local Read Blocks": 0,
+                "Local Dirtied Blocks": 0,
+                "Local Written Blocks": 0,
+                "Temp Read Blocks": 0,
+                "Temp Written Blocks": 0
+              },
+              {
+                "Node Type": "Sort",
+                "Parent Relationship": "Outer",
+                "Parallel Aware": false,
+                "Async Capable": false,
+                "Startup Cost": 2235.71,
+                "Total Cost": 2235.77,
+                "Plan Rows": 24,
+                "Plan Width": 77,
+                "Actual Rows": 20,
+                "Actual Loops": 1,
+                "Disabled": false,
+                "Sort Key": [
+                  "s.transaction_date DESC",
+                  "s.id DESC"
+                ],
+                "Sort Method": "quicksort",
+                "Sort Space Used": 20,
+                "Sort Space Type": "Memory",
+                "Shared Hit Blocks": 1038,
+                "Shared Read Blocks": 0,
+                "Shared Dirtied Blocks": 0,
+                "Shared Written Blocks": 0,
+                "Local Hit Blocks": 0,
+                "Local Read Blocks": 0,
+                "Local Dirtied Blocks": 0,
+                "Local Written Blocks": 0,
+                "Temp Read Blocks": 0,
+                "Temp Written Blocks": 0,
+                "Plans": [
+                  {
+                    "Node Type": "Seq Scan",
+                    "Parent Relationship": "Outer",
+                    "Parallel Aware": false,
+                    "Async Capable": false,
+                    "Relation Name": "pet_sales",
+                    "Alias": "s",
+                    "Startup Cost": 0,
+                    "Total Cost": 2235.16,
+                    "Plan Rows": 24,
+                    "Plan Width": 77,
+                    "Actual Rows": 26,
+                    "Actual Loops": 1,
+                    "Disabled": false,
+                    "Filter": "((voided_at IS NULL) AND (transaction_date >= '2026-07-01'::date) AND (transaction_date < '2026-11-01'::date) AND (customer_id = (InitPlan 1).col1) AND (status = 'approved'::bilikis.pet_sale_status))",
+                    "Rows Removed by Filter": 59976,
+                    "Shared Hit Blocks": 1038,
+                    "Shared Read Blocks": 0,
+                    "Shared Dirtied Blocks": 0,
+                    "Shared Written Blocks": 0,
+                    "Local Hit Blocks": 0,
+                    "Local Read Blocks": 0,
+                    "Local Dirtied Blocks": 0,
+                    "Local Written Blocks": 0,
+                    "Temp Read Blocks": 0,
+                    "Temp Written Blocks": 0
+                  }
+                ]
+              }
+            ]
+          },
+          "Planning": {
+            "Shared Hit Blocks": 0,
+            "Shared Read Blocks": 0,
+            "Shared Dirtied Blocks": 0,
+            "Shared Written Blocks": 0,
+            "Local Hit Blocks": 0,
+            "Local Read Blocks": 0,
+            "Local Dirtied Blocks": 0,
+            "Local Written Blocks": 0,
+            "Temp Read Blocks": 0,
+            "Temp Written Blocks": 0
+          },
+          "Planning Time": 0.223,
+          "Triggers": [],
+          "Execution Time": 8.457
+        }
+      },
+      "after": {
+        "execution_ms": [
+          0.195,
+          0.077,
+          0.125,
+          0.142,
+          0.097,
+          0.08,
+          0.07
+        ],
+        "median_ms": 0.097,
+        "shared_blocks": 27,
+        "scan_nodes": [
+          {
+            "type": "Index Scan",
+            "index": "p2_pet_sales_customer_date_idx",
+            "actual_rows": 20
+          }
+        ],
+        "plan": {
+          "Plan": {
+            "Node Type": "Limit",
+            "Parallel Aware": false,
+            "Async Capable": false,
+            "Startup Cost": 8.71,
+            "Total Cost": 92.59,
+            "Plan Rows": 20,
+            "Plan Width": 77,
+            "Actual Rows": 20,
+            "Actual Loops": 1,
+            "Disabled": false,
+            "Shared Hit Blocks": 27,
+            "Shared Read Blocks": 0,
+            "Shared Dirtied Blocks": 0,
+            "Shared Written Blocks": 0,
+            "Local Hit Blocks": 0,
+            "Local Read Blocks": 0,
+            "Local Dirtied Blocks": 0,
+            "Local Written Blocks": 0,
+            "Temp Read Blocks": 0,
+            "Temp Written Blocks": 0,
+            "Plans": [
+              {
+                "Node Type": "Index Scan",
+                "Parent Relationship": "InitPlan",
+                "Subplan Name": "InitPlan 1",
+                "Parallel Aware": false,
+                "Async Capable": false,
+                "Scan Direction": "Forward",
+                "Index Name": "customers_customer_code_key",
+                "Relation Name": "customers",
+                "Alias": "customers",
+                "Startup Cost": 0.27,
+                "Total Cost": 8.29,
+                "Plan Rows": 1,
+                "Plan Width": 16,
+                "Actual Rows": 1,
+                "Actual Loops": 1,
+                "Disabled": false,
+                "Index Cond": "(customer_code = 'BENCH-CUS-0042'::text)",
+                "Rows Removed by Index Recheck": 0,
+                "Index Searches": 1,
+                "Shared Hit Blocks": 3,
+                "Shared Read Blocks": 0,
+                "Shared Dirtied Blocks": 0,
+                "Shared Written Blocks": 0,
+                "Local Hit Blocks": 0,
+                "Local Read Blocks": 0,
+                "Local Dirtied Blocks": 0,
+                "Local Written Blocks": 0,
+                "Temp Read Blocks": 0,
+                "Temp Written Blocks": 0
+              },
+              {
+                "Node Type": "Index Scan",
+                "Parent Relationship": "Outer",
+                "Parallel Aware": false,
+                "Async Capable": false,
+                "Scan Direction": "Forward",
+                "Index Name": "p2_pet_sales_customer_date_idx",
+                "Relation Name": "pet_sales",
+                "Alias": "s",
+                "Startup Cost": 0.41,
+                "Total Cost": 101.07,
+                "Plan Rows": 24,
+                "Plan Width": 77,
+                "Actual Rows": 20,
+                "Actual Loops": 1,
+                "Disabled": false,
+                "Index Cond": "((customer_id = (InitPlan 1).col1) AND (transaction_date >= '2026-07-01'::date) AND (transaction_date < '2026-11-01'::date))",
+                "Rows Removed by Index Recheck": 0,
+                "Index Searches": 1,
+                "Shared Hit Blocks": 27,
+                "Shared Read Blocks": 0,
+                "Shared Dirtied Blocks": 0,
+                "Shared Written Blocks": 0,
+                "Local Hit Blocks": 0,
+                "Local Read Blocks": 0,
+                "Local Dirtied Blocks": 0,
+                "Local Written Blocks": 0,
+                "Temp Read Blocks": 0,
+                "Temp Written Blocks": 0
+              }
+            ]
+          },
+          "Planning": {
+            "Shared Hit Blocks": 0,
+            "Shared Read Blocks": 0,
+            "Shared Dirtied Blocks": 0,
+            "Shared Written Blocks": 0,
+            "Local Hit Blocks": 0,
+            "Local Read Blocks": 0,
+            "Local Dirtied Blocks": 0,
+            "Local Written Blocks": 0,
+            "Temp Read Blocks": 0,
+            "Temp Written Blocks": 0
+          },
+          "Planning Time": 0.217,
+          "Triggers": [],
+          "Execution Time": 0.097
+        }
+      },
+      "index_bytes": 3407872,
+      "same_results": true
+    },
+    {
+      "name": "product-movement-period",
+      "params": [
+        "C_PET_50",
+        "2026-07-01",
+        "2026-11-01"
+      ],
+      "table": "stock_movements",
+      "index": "p2_stock_movements_product_date_idx",
+      "rows": [
+        {
+          "movement_count": 80,
+          "received": "100",
+          "issued": "403",
+          "net_movement": "-303"
+        }
+      ],
+      "before": {
+        "execution_ms": [
+          7.044,
+          7.066,
+          7.102,
+          6.334,
+          6.61,
+          6.414,
+          6.281
+        ],
+        "median_ms": 6.61,
+        "shared_blocks": 888,
+        "scan_nodes": [
+          {
+            "type": "Seq Scan",
+            "index": null,
+            "actual_rows": 80
+          }
+        ],
+        "plan": {
+          "Plan": {
+            "Node Type": "Aggregate",
+            "Strategy": "Plain",
+            "Partial Mode": "Simple",
+            "Parallel Aware": false,
+            "Async Capable": false,
+            "Startup Cost": 1897.12,
+            "Total Cost": 1897.13,
+            "Plan Rows": 1,
+            "Plan Width": 100,
+            "Actual Rows": 1,
+            "Actual Loops": 1,
+            "Disabled": false,
+            "Shared Hit Blocks": 888,
+            "Shared Read Blocks": 0,
+            "Shared Dirtied Blocks": 0,
+            "Shared Written Blocks": 0,
+            "Local Hit Blocks": 0,
+            "Local Read Blocks": 0,
+            "Local Dirtied Blocks": 0,
+            "Local Written Blocks": 0,
+            "Temp Read Blocks": 0,
+            "Temp Written Blocks": 0,
+            "Plans": [
+              {
+                "Node Type": "Seq Scan",
+                "Parent Relationship": "InitPlan",
+                "Subplan Name": "InitPlan 1",
+                "Parallel Aware": false,
+                "Async Capable": false,
+                "Relation Name": "products",
+                "Alias": "products",
+                "Startup Cost": 0,
+                "Total Cost": 4.53,
+                "Plan Rows": 1,
+                "Plan Width": 16,
+                "Actual Rows": 1,
+                "Actual Loops": 1,
+                "Disabled": false,
+                "Filter": "(product_code = 'C_PET_50'::text)",
+                "Rows Removed by Filter": 121,
+                "Shared Hit Blocks": 3,
+                "Shared Read Blocks": 0,
+                "Shared Dirtied Blocks": 0,
+                "Shared Written Blocks": 0,
+                "Local Hit Blocks": 0,
+                "Local Read Blocks": 0,
+                "Local Dirtied Blocks": 0,
+                "Local Written Blocks": 0,
+                "Temp Read Blocks": 0,
+                "Temp Written Blocks": 0
+              },
+              {
+                "Node Type": "Seq Scan",
+                "Parent Relationship": "Outer",
+                "Parallel Aware": false,
+                "Async Capable": false,
+                "Relation Name": "stock_movements",
+                "Alias": "m",
+                "Startup Cost": 0,
+                "Total Cost": 1891.58,
+                "Plan Rows": 80,
+                "Plan Width": 7,
+                "Actual Rows": 80,
+                "Actual Loops": 1,
+                "Disabled": false,
+                "Filter": "((transaction_date >= '2026-07-01'::date) AND (transaction_date < '2026-11-01'::date) AND (product_id = (InitPlan 1).col1))",
+                "Rows Removed by Filter": 57439,
+                "Shared Hit Blocks": 888,
+                "Shared Read Blocks": 0,
+                "Shared Dirtied Blocks": 0,
+                "Shared Written Blocks": 0,
+                "Local Hit Blocks": 0,
+                "Local Read Blocks": 0,
+                "Local Dirtied Blocks": 0,
+                "Local Written Blocks": 0,
+                "Temp Read Blocks": 0,
+                "Temp Written Blocks": 0
+              }
+            ]
+          },
+          "Planning": {
+            "Shared Hit Blocks": 0,
+            "Shared Read Blocks": 0,
+            "Shared Dirtied Blocks": 0,
+            "Shared Written Blocks": 0,
+            "Local Hit Blocks": 0,
+            "Local Read Blocks": 0,
+            "Local Dirtied Blocks": 0,
+            "Local Written Blocks": 0,
+            "Temp Read Blocks": 0,
+            "Temp Written Blocks": 0
+          },
+          "Planning Time": 0.173,
+          "Triggers": [],
+          "Execution Time": 6.61
+        }
+      },
+      "after": {
+        "execution_ms": [
+          0.258,
+          0.207,
+          0.182,
+          0.152,
+          0.185,
+          0.159,
+          0.158
+        ],
+        "median_ms": 0.182,
+        "shared_blocks": 83,
+        "scan_nodes": [
+          {
+            "type": "Bitmap Heap Scan",
+            "index": null,
+            "actual_rows": 80
+          },
+          {
+            "type": "Bitmap Index Scan",
+            "index": "p2_stock_movements_product_date_idx",
+            "actual_rows": 80
+          }
+        ],
+        "plan": {
+          "Plan": {
+            "Node Type": "Aggregate",
+            "Strategy": "Plain",
+            "Partial Mode": "Simple",
+            "Parallel Aware": false,
+            "Async Capable": false,
+            "Startup Cost": 252.11,
+            "Total Cost": 252.12,
+            "Plan Rows": 1,
+            "Plan Width": 100,
+            "Actual Rows": 1,
+            "Actual Loops": 1,
+            "Disabled": false,
+            "Shared Hit Blocks": 83,
+            "Shared Read Blocks": 0,
+            "Shared Dirtied Blocks": 0,
+            "Shared Written Blocks": 0,
+            "Local Hit Blocks": 0,
+            "Local Read Blocks": 0,
+            "Local Dirtied Blocks": 0,
+            "Local Written Blocks": 0,
+            "Temp Read Blocks": 0,
+            "Temp Written Blocks": 0,
+            "Plans": [
+              {
+                "Node Type": "Seq Scan",
+                "Parent Relationship": "InitPlan",
+                "Subplan Name": "InitPlan 1",
+                "Parallel Aware": false,
+                "Async Capable": false,
+                "Relation Name": "products",
+                "Alias": "products",
+                "Startup Cost": 0,
+                "Total Cost": 4.53,
+                "Plan Rows": 1,
+                "Plan Width": 16,
+                "Actual Rows": 1,
+                "Actual Loops": 1,
+                "Disabled": false,
+                "Filter": "(product_code = 'C_PET_50'::text)",
+                "Rows Removed by Filter": 121,
+                "Shared Hit Blocks": 3,
+                "Shared Read Blocks": 0,
+                "Shared Dirtied Blocks": 0,
+                "Shared Written Blocks": 0,
+                "Local Hit Blocks": 0,
+                "Local Read Blocks": 0,
+                "Local Dirtied Blocks": 0,
+                "Local Written Blocks": 0,
+                "Temp Read Blocks": 0,
+                "Temp Written Blocks": 0
+              },
+              {
+                "Node Type": "Bitmap Heap Scan",
+                "Parent Relationship": "Outer",
+                "Parallel Aware": false,
+                "Async Capable": false,
+                "Relation Name": "stock_movements",
+                "Alias": "m",
+                "Startup Cost": 5.31,
+                "Total Cost": 246.57,
+                "Plan Rows": 80,
+                "Plan Width": 7,
+                "Actual Rows": 80,
+                "Actual Loops": 1,
+                "Disabled": false,
+                "Recheck Cond": "((product_id = (InitPlan 1).col1) AND (transaction_date >= '2026-07-01'::date) AND (transaction_date < '2026-11-01'::date))",
+                "Rows Removed by Index Recheck": 0,
+                "Exact Heap Blocks": 78,
+                "Lossy Heap Blocks": 0,
+                "Shared Hit Blocks": 83,
+                "Shared Read Blocks": 0,
+                "Shared Dirtied Blocks": 0,
+                "Shared Written Blocks": 0,
+                "Local Hit Blocks": 0,
+                "Local Read Blocks": 0,
+                "Local Dirtied Blocks": 0,
+                "Local Written Blocks": 0,
+                "Temp Read Blocks": 0,
+                "Temp Written Blocks": 0,
+                "Plans": [
+                  {
+                    "Node Type": "Bitmap Index Scan",
+                    "Parent Relationship": "Outer",
+                    "Parallel Aware": false,
+                    "Async Capable": false,
+                    "Index Name": "p2_stock_movements_product_date_idx",
+                    "Startup Cost": 0,
+                    "Total Cost": 5.29,
+                    "Plan Rows": 80,
+                    "Plan Width": 0,
+                    "Actual Rows": 80,
+                    "Actual Loops": 1,
+                    "Disabled": false,
+                    "Index Cond": "((product_id = (InitPlan 1).col1) AND (transaction_date >= '2026-07-01'::date) AND (transaction_date < '2026-11-01'::date))",
+                    "Index Searches": 1,
+                    "Shared Hit Blocks": 5,
+                    "Shared Read Blocks": 0,
+                    "Shared Dirtied Blocks": 0,
+                    "Shared Written Blocks": 0,
+                    "Local Hit Blocks": 0,
+                    "Local Read Blocks": 0,
+                    "Local Dirtied Blocks": 0,
+                    "Local Written Blocks": 0,
+                    "Temp Read Blocks": 0,
+                    "Temp Written Blocks": 0
+                  }
+                ]
+              }
+            ]
+          },
+          "Planning": {
+            "Shared Hit Blocks": 0,
+            "Shared Read Blocks": 0,
+            "Shared Dirtied Blocks": 0,
+            "Shared Written Blocks": 0,
+            "Local Hit Blocks": 0,
+            "Local Read Blocks": 0,
+            "Local Dirtied Blocks": 0,
+            "Local Written Blocks": 0,
+            "Temp Read Blocks": 0,
+            "Temp Written Blocks": 0
+          },
+          "Planning Time": 0.138,
+          "Triggers": [],
+          "Execution Time": 0.182
+        }
+      },
+      "index_bytes": 811008,
+      "same_results": true
+    }
+  ]
+}
