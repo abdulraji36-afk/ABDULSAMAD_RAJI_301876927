@@ -49,6 +49,8 @@ npm ci
 npm run verify:p2
 ```
 
-Run `npm run --silent verify:p2 -- --json` to print the full measurements and plans.
+Run `npm run --silent verify:p2 -- --json` to print the full measurements and plans. The screenshot comes from the recorded run on 8 November 2026.
+
+![Screenshot of the six report checks and measured index comparison](evidence/query-optimisation-screenshot.png)
 
 Codex assisted with the SQL, validation runner, and analysis of the measured plans.
