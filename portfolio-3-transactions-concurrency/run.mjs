@@ -1,5 +1,6 @@
 import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
+import { setTimeout as delay } from 'node:timers/promises';
 import pg from 'pg';
 
 const { Client } = pg;
@@ -72,9 +73,23 @@ async function expectError(operation, sqlstate) {
   assert.fail(`Expected SQLSTATE ${sqlstate}`);
 }
 
+async function observeWait(observer, blockedPid, blockingPid) {
+  const deadline = Date.now() + 5000;
+  while (Date.now() < deadline) {
+    const wait = await row(observer, `SELECT wait_event_type, wait_event,
+      pg_blocking_pids(pid) AS blocking_pids
+      FROM pg_stat_activity WHERE pid = $1`, [blockedPid]);
+    if (wait.wait_event_type === 'Lock' && wait.blocking_pids.includes(blockingPid)) return wait;
+    await delay(25);
+  }
+  assert.fail('Session B did not wait on Session A within five seconds.');
+}
+
+let inFlight;
 try {
   const observer = await connect('observer');
   const a = await connect('a');
+  const b = await connect('b');
   const setup = await row(observer, `SELECT version() AS engine, current_database() AS database,
     to_regnamespace('bilikis') IS NULL AS fresh`);
   assert.equal(setup.database, databaseName);
@@ -109,9 +124,59 @@ try {
   const rollbackAfter = await snapshot(observer, rolledBackId);
   assert.deepEqual(rollbackAfter, { stock: 80, sales: 0, lines: 0, movements: 0 });
 
-  console.log(`${setup.engine} · ${product.product_code}`);
-  console.log(`COMMIT passed: stock ${initial} → ${commitAfter.stock}, all three records saved.`);
-  console.log(`ROLLBACK passed: ${duplicate.sqlstate} → ${aborted.sqlstate}, stock restored to ${rollbackAfter.stock}.`);
+  // CONCURRENCY: two different server sessions each try to sell 50 of 80 packs.
+  await a.query(begin);
+  await b.query(begin);
+  const sessionInfo = 'SELECT pg_backend_pid() AS pid, current_setting(\'transaction_isolation\') AS isolation';
+  const sessionA = await row(a, sessionInfo);
+  const sessionB = await row(b, sessionInfo);
+  assert.notEqual(sessionA.pid, sessionB.pid);
+  assert.equal(sessionA.isolation, 'read committed');
+  assert.equal(sessionB.isolation, 'read committed');
+  const winnerId = await post(a, 'P3-CONCURRENT-A', 50);
+  const aUncommittedStock = await stock(a);
+  const bBeforeCommit = await stock(b);
+  assert.equal(aUncommittedStock, 30);
+  assert.equal(bBeforeCommit, 80);
+
+  // Attach the rejection handler before observing the waiting query.
+  inFlight = expectError(() => post(b, 'P3-CONCURRENT-B', 50), 'P3001')
+    .then((error) => ({ error }), (failure) => ({ failure }));
+  const wait = await observeWait(observer, sessionB.pid, sessionA.pid);
+  await a.query('COMMIT');
+  const outcome = await inFlight;
+  if (outcome.failure) throw outcome.failure;
+  assert.match(outcome.error.message, /available 30, requested 50/);
+  await b.query('ROLLBACK');
+  const finalWinner = await snapshot(observer, winnerId);
+  assert.deepEqual(finalWinner, { stock: 30, sales: 1, lines: 1, movements: 1 });
+  const finalCounts = await row(observer, `SELECT
+    (SELECT count(*)::int FROM bilikis.pet_sales) AS all_pet_sales,
+    (SELECT count(*)::int FROM bilikis.pet_sale_items) AS all_pet_lines,
+    (SELECT count(*)::int FROM bilikis.stock_movements) AS all_movements,
+    (SELECT count(*)::int FROM bilikis.pet_sales WHERE sales_no = 'P3-CONCURRENT-B') AS rejected_sales`);
+  assert.deepEqual(finalCounts, { all_pet_sales: 4, all_pet_lines: 4, all_movements: 9, rejected_sales: 0 });
+
+  const evidence = {
+    started_at_utc: started,
+    finished_at_utc: new Date().toISOString(),
+    engine: setup.engine,
+    product,
+    commit: { sale_no: 'P3-COMMIT', quantity: 5, inside: commitInside, observer_before: commitBefore, observer_after: commitAfter },
+    rollback: { sale_no: 'P3-ROLLBACK', quantity: 3, inside: rollbackInside, duplicate, aborted, observer_after: rollbackAfter },
+    concurrency: { session_a: sessionA, session_b: sessionB, quantity_per_session: 50,
+      a_stock_before_commit: aUncommittedStock, b_stock_before_commit: bBeforeCommit,
+      observed_wait: wait, b_error_after_a_commit: outcome.error, winner: finalWinner, final_counts: finalCounts },
+  };
+  if (process.argv.includes('--json')) {
+    console.log(JSON.stringify(evidence, null, 2));
+  } else {
+    console.log(`COMMIT passed: stock ${initial} → ${commitAfter.stock}, all three records saved.`);
+    console.log(`ROLLBACK passed: ${duplicate.sqlstate} → ${aborted.sqlstate}, stock restored to ${rollbackAfter.stock}.`);
+    console.log(`Concurrency passed: session ${sessionB.pid} waited for ${sessionA.pid} (${wait.wait_event_type}/${wait.wait_event}).`);
+    console.log(`Session B received ${outcome.error.sqlstate}, with ${finalWinner.stock} packs remaining.`);
+  }
 } finally {
+  // Closing session A releases its lock even if the wait check failed.
   for (const client of clients) await client.end();
 }

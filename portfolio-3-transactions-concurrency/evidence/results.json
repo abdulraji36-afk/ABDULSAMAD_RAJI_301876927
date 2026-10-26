@@ -1,0 +1,92 @@
+{
+  "started_at_utc": "2026-11-08T10:24:12.140Z",
+  "finished_at_utc": "2026-11-08T10:24:12.747Z",
+  "engine": "PostgreSQL 18.6 on x86_64-windows, compiled by msvc-19.44.35228, 64-bit",
+  "product": {
+    "product_code": "C_PET_50",
+    "product_name": "COCA COLA LS 50CL X12 PET",
+    "unit": "Packs"
+  },
+  "commit": {
+    "sale_no": "P3-COMMIT",
+    "quantity": 5,
+    "inside": {
+      "stock": 80,
+      "sales": 1,
+      "lines": 1,
+      "movements": 1
+    },
+    "observer_before": {
+      "stock": 85,
+      "sales": 0,
+      "lines": 0,
+      "movements": 0
+    },
+    "observer_after": {
+      "stock": 80,
+      "sales": 1,
+      "lines": 1,
+      "movements": 1
+    }
+  },
+  "rollback": {
+    "sale_no": "P3-ROLLBACK",
+    "quantity": 3,
+    "inside": {
+      "stock": 77,
+      "sales": 1,
+      "lines": 1,
+      "movements": 1
+    },
+    "duplicate": {
+      "sqlstate": "23505",
+      "message": "duplicate key value violates unique constraint \"pet_sales_sales_no_key\""
+    },
+    "aborted": {
+      "sqlstate": "25P02",
+      "message": "current transaction is aborted, commands ignored until end of transaction block"
+    },
+    "observer_after": {
+      "stock": 80,
+      "sales": 0,
+      "lines": 0,
+      "movements": 0
+    }
+  },
+  "concurrency": {
+    "session_a": {
+      "pid": 8216,
+      "isolation": "read committed"
+    },
+    "session_b": {
+      "pid": 31908,
+      "isolation": "read committed"
+    },
+    "quantity_per_session": 50,
+    "a_stock_before_commit": 30,
+    "b_stock_before_commit": 80,
+    "observed_wait": {
+      "wait_event_type": "Lock",
+      "wait_event": "transactionid",
+      "blocking_pids": [
+        8216
+      ]
+    },
+    "b_error_after_a_commit": {
+      "sqlstate": "P3001",
+      "message": "Insufficient stock for C_PET_50: available 30, requested 50"
+    },
+    "winner": {
+      "stock": 30,
+      "sales": 1,
+      "lines": 1,
+      "movements": 1
+    },
+    "final_counts": {
+      "all_pet_sales": 4,
+      "all_pet_lines": 4,
+      "all_movements": 9,
+      "rejected_sales": 0
+    }
+  }
+}
