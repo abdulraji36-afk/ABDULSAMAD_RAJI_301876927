@@ -42,4 +42,6 @@ docker stop bilikis-p3
 
 Use a fresh database for each run. Run `npm run --silent verify:p3 -- --json` to capture the observations as JSON. [Recorded transaction results](evidence/results.json)
 
+![Screenshot of commit, rollback, and two-session lock evidence](evidence/transactions-screenshot.png)
+
 Codex assisted with the SQL, verifier, and analysis of the observed transaction results.
