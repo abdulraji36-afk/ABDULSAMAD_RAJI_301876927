@@ -9,3 +9,5 @@ Portfolio 1 models sales, stock, dispatch, and returnable containers for a bever
 Portfolio 2 compares business queries and index performance on reproducible synthetic data. [Portfolio 2 report, SQL, and evidence](portfolio-2-query-optimisation/README.md)
 
 Portfolio 3 demonstrates commit, rollback, and concurrent stock sales in PostgreSQL. [Portfolio 3 report, SQL, and evidence](portfolio-3-transactions-concurrency/README.md)
+
+Portfolio 4 projects Bilikis sales into a document model. [Portfolio 4 model and projection](portfolio-4-nosql/README.md)
