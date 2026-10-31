@@ -10,4 +10,4 @@ Portfolio 2 compares business queries and index performance on reproducible synt
 
 Portfolio 3 demonstrates commit, rollback, and concurrent stock sales in PostgreSQL. [Portfolio 3 report, SQL, and evidence](portfolio-3-transactions-concurrency/README.md)
 
-Portfolio 4 projects Bilikis sales into a document model. [Portfolio 4 model and projection](portfolio-4-nosql/README.md)
+Portfolio 4 models Bilikis sales and dispatch details as MongoDB documents. [Portfolio 4 report, model, and evidence](portfolio-4-nosql/README.md)
