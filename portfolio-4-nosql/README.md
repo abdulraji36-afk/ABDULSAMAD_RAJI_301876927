@@ -66,4 +66,6 @@ docker stop bilikis-p4
 
 Wait for the ping to succeed before running the verifier. Run `npm run --silent verify:p4 -- --json` on a fresh lab database to capture the results.
 
+![Screenshot of MongoDB CRUD and matching PostgreSQL aggregates](evidence/nosql-screenshot.png)
+
 Codex assisted with the data model, SQL projection, MongoDB verifier, and documentation.
