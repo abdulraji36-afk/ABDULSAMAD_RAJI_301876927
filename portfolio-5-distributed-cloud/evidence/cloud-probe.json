@@ -1,0 +1,12 @@
+{
+  "recorded_at_utc": "2026-11-08T12:14:34.483Z",
+  "service": "Configured Supabase project",
+  "access": "Anonymous request with the app publishable key",
+  "data_api": {
+    "method": "GET",
+    "path": "/rest/v1/products?select=product_code&product_code=eq.C_PET_50&limit=1",
+    "http_status": 200,
+    "returned_rows": 0,
+    "requested_catalogue_code_found": false
+  }
+}
