@@ -1,0 +1,84 @@
+{
+  "started_at_utc": "2026-11-08T12:20:30.501Z",
+  "finished_at_utc": "2026-11-08T12:20:32.259Z",
+  "publisher_version": "18.6",
+  "subscriber_version": "18.6",
+  "separate_clusters_verified": true,
+  "sale_quantity": 10,
+  "replicated_table": "bilikis.stock_report",
+  "publication": "p5_stock_publication",
+  "subscription": "p5_stock_subscription",
+  "initial": {
+    "primary": {
+      "row_count": 3,
+      "product": {
+        "product_code": "C_PET_50",
+        "product_name": "COCA COLA LS 50CL X12 PET",
+        "unit": "Packs",
+        "current_stock": "85",
+        "version": 1,
+        "refreshed_at": "2026-11-08T12:20:31.001Z"
+      }
+    },
+    "subscriber": {
+      "row_count": 3,
+      "product": {
+        "product_code": "C_PET_50",
+        "product_name": "COCA COLA LS 50CL X12 PET",
+        "unit": "Packs",
+        "current_stock": "85",
+        "version": 1,
+        "refreshed_at": "2026-11-08T12:20:31.001Z"
+      }
+    }
+  },
+  "apply_paused": {
+    "primary": {
+      "row_count": 3,
+      "product": {
+        "product_code": "C_PET_50",
+        "product_name": "COCA COLA LS 50CL X12 PET",
+        "unit": "Packs",
+        "current_stock": "75",
+        "version": 2,
+        "refreshed_at": "2026-11-08T12:20:32.045Z"
+      }
+    },
+    "subscriber": {
+      "row_count": 3,
+      "product": {
+        "product_code": "C_PET_50",
+        "product_name": "COCA COLA LS 50CL X12 PET",
+        "unit": "Packs",
+        "current_stock": "85",
+        "version": 1,
+        "refreshed_at": "2026-11-08T12:20:31.001Z"
+      }
+    }
+  },
+  "caught_up": {
+    "primary": {
+      "row_count": 3,
+      "product": {
+        "product_code": "C_PET_50",
+        "product_name": "COCA COLA LS 50CL X12 PET",
+        "unit": "Packs",
+        "current_stock": "75",
+        "version": 2,
+        "refreshed_at": "2026-11-08T12:20:32.045Z"
+      }
+    },
+    "subscriber": {
+      "row_count": 3,
+      "product": {
+        "product_code": "C_PET_50",
+        "product_name": "COCA COLA LS 50CL X12 PET",
+        "unit": "Packs",
+        "current_stock": "75",
+        "version": 2,
+        "refreshed_at": "2026-11-08T12:20:32.045Z"
+      }
+    }
+  },
+  "replication_slot_removed": true
+}

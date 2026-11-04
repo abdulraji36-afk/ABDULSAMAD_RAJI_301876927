@@ -11,7 +11,8 @@
     "verify:p1": "node scripts/verify-p1.mjs",
     "verify:p2": "node portfolio-2-query-optimisation/run.mjs",
     "verify:p3": "node portfolio-3-transactions-concurrency/run.mjs",
-    "verify:p4": "node portfolio-4-nosql/run.mjs"
+    "verify:p4": "node portfolio-4-nosql/run.mjs",
+    "verify:p5": "node portfolio-5-distributed-cloud/run.mjs"
   },
   "devDependencies": {
     "@electric-sql/pglite": "0.5.14",
