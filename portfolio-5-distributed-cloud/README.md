@@ -46,7 +46,9 @@ npm ci
 
 The [launcher](run-local.ps1) creates two fresh loopback clusters on temporary ports and stops them on exit. For existing **disposable** local clusters, use `npm run verify:p5` with `P5_PRIMARY_URL` and `P5_SUBSCRIBER_URL` set to fresh databases named `bilikis_p5_publisher` and `bilikis_p5_subscriber`. The publisher needs `wal_level=logical`, and the lab connections need permission to create the schema, publication and subscription. Use `-Json` with the launcher or `npm run verify:p5 -- --json` for structured output.
 
-The [runner](run.mjs) checks the stock and version at each step. The [recorded results](evidence/results.json) include the database versions, timestamps and observations from both instances.
+The [runner](run.mjs) checks the stock and version at each step. The [recorded results](evidence/results.json) include the database versions, timestamps and observations from both instances. The screenshot was rendered from that JSON.
+
+![Screenshot of the measured stock replication checkpoints and hosted API response](evidence/replication-screenshot.png)
 
 ## References
 
