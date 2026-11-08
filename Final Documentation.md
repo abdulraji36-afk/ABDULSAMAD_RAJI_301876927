@@ -8,7 +8,9 @@ a.raji6927@miva.edu.ng  |  8th November 2026
 
 ## Organisation and scope
 
-Bilikis Store is distributing drinks in PET plastic bottles and returnable glass bottles (RGB). Supabase backs the operations app to capture stock receipts and sales, assign sales to dispatch trips, and keep track of empty containers that are due from customers. That workflow is used in the portfolio to verify the impact of database design on making good stock decisions and reporting.
+The selected organisation is Bilikis Store, a beverage distribution business. Its operations app manages sales, inventory and deliveries for drinks in plastic (PET) and returnable glass (RGB) bottles. Sales staff, storekeepers, delivery staff, managers and administrators use the database through the app.
+
+The database stores products, customers, staff profiles, stock receipts and movements, sales and line items, dispatch trips, empty-container returns and audit logs. It supports receiving stock, requesting and approving PET sales, assigning orders to trips, recording returns, checking outstanding empties, and reporting on stock and sales.
 
 The exercises are based on the Bilikis backend with a local schema. Product codes, names, size, and units have been retained in three catalogue entries. Customer records, sales, prices, stock and dispatch activity are synthetic.
 

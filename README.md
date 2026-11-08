@@ -4,9 +4,11 @@
 
 Final report ([Markdown](Final%20Documentation.md) · [PDF](Final%20Documentation.pdf)) · [Full ER diagram (PNG)](portfolio-1-database-design/diagrams/full-schema.png)
 
-## About the app
+## Selected organisation
 
-Bilikis Store is a beverage distributor. Its operations app records incoming stock, manages sales requests and approvals for drinks in plastic bottles (PET), and groups orders into delivery trips. It also tracks how many empty glass bottles customers return and how many they still owe. Administrators manage products and customers, review stock reports, and check the audit history.
+The selected organisation is Bilikis Store, a beverage distribution business. Its operations app manages sales, inventory and deliveries for drinks in plastic (PET) and returnable glass (RGB) bottles. Sales staff, storekeepers, delivery staff, managers and administrators use the database through the app.
+
+The database stores products, customers, staff profiles, stock receipts and movements, sales and line items, dispatch trips, empty-container returns and audit logs. It supports receiving stock, requesting and approving PET sales, assigning orders to trips, recording returns, checking outstanding empties, and reporting on stock and sales.
 
 The app uses Next.js, Supabase Auth, and PostgreSQL. This portfolio adapts the app’s database schema and uses three products from the Bilikis catalogue. The customer records, sales, stock quantities, and dispatch activity are synthetic.
 
