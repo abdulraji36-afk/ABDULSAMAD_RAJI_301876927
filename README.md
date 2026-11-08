@@ -1,6 +1,6 @@
 # Bilikis Store Database Portfolio
 
-[GitHub repository](https://github.com/abdulraji36-afk/ABDULSAMAD_RAJI_301876927)
+[GitHub repository](https://github.com/abdulraji36-afk/Raji_Abdulsamad_301876927)
 
 Final report ([Markdown](Final%20Documentation.md) · [PDF](Final%20Documentation.pdf)) · [Full ER diagram (PNG)](portfolio-1-database-design/diagrams/full-schema.png)
 

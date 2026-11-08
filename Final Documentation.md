@@ -1,10 +1,10 @@
 # Bilikis Store Database Portfolio
 
-Abdulsamad Raji  |  Registration 301876927  |  Matriculation 2026/A/MIT/0273
+Raji Abdulsamad  |  Registration 301876927  |  Matriculation 2026/A/MIT/0273
 
 a.raji6927@miva.edu.ng  |  8th November 2026
 
-[GitHub repository](https://github.com/abdulraji36-afk/ABDULSAMAD_RAJI_301876927)
+[GitHub repository](https://github.com/abdulraji36-afk/Raji_Abdulsamad_301876927)
 
 ## Organisation and scope
 
